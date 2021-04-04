@@ -12,9 +12,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 	$text=$_POST["text"];
 	$replaceText=$_POST["replaceText"];
 
-	$replacedText=preg_replace($pattern, $replaceText, $text);
-
-	if(preg_match($pattern, $text)) {
+    // $replacedText=preg_replace('/\s+/', '', $text); // removes whitespaces
+    // $replacedText=preg_replace('/[^0-9:.,]/', '', $text); // removes nonnumeric characters except comma and dot
+    // $replacedText=preg_replace('/\n/', '', $text); // removes new lines
+    //preg_match('#\[(.*?)\]#', $text,$replacedText); // extracts text (within parenthesis)
+   // $replacedText=preg_replace($pattern, $replaceText, $text);
+	if(preg_match($pattern, $text)){
 						$match="Match!";
 					} else {
 						$match="Does not match!";
@@ -51,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 			<dt>&nbsp;</dt>
 			<dd><input type="submit" value="Check"></dd>
 		</dl>
-
 	</form>
 </body>
 </html>
